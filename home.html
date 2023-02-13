@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title> AZoom Car Rental </title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.navbar {
+			display: flex;
+			justify-content: center;
+			position: sticky;
+			top: 0;
+			cursor: pointer;
+		}
+
+
+		.background {
+			background: #ADD8E6;
+			background-blend-mode: lighten;
+			background-size: cover;
+		}
+
+		.nav-list {
+			width: 40%;
+			display: flex;
+            justify-content: center;
+
+		}
+
+
+		.nav-list li {
+			list-style: none;
+			padding: 26px 30px;
+		}
+
+		.nav-list li a {
+			text-decoration: none;
+            text-transform: uppercase;
+			color: rebeccapurple;
+		}
+
+		.nav-list li a:hover {
+			color: grey;
+		}
+
+        .main {
+        text-align: center;
+        padding: 100px;
+        }
+
+        .promomain {
+        color: black;
+        text-shadow: 5px 5px 10px red;
+
+
+        }
+
+ 
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        .cars img{
+			width: 700px;
+		}
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        /* Caption text */
+        .text {
+            color: #000000;
+            font-size: 20px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 90%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 30px 30px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 80;
+            border-radius: 3px 0 0 3px;
+        }
+
+      
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+	</style>
+</head>
+
+<body>
+	<nav class="navbar background">
+        <ul class="nav-list">
+            <li><a href="booking.html">Book a car</a></li>
+            <li><a href="ReturnCar.html">Return  car</a></li>
+            <li><a href="staff login.html">Staff login</a></li>
+            <li><a href="Final Payment.html">Make payment</a></li>
+
+
+
+
+
+        </ul>
+
+		
+	</nav>
+
+</head>
+
+	<main>
+		<div class="main">
+			<h1>Welcome to AZoom Car Rental</h1>
+			<br><br>
+			<br><br>
+			<div class="cars">
+				<img src="car.jpg" alt="" class="center">
+			</div>
+			<br><br>
+			<br><br>
+            <div class="promomain">
+			<h1>Monthly Rental Promo</h1>
+			<br><br>
+			<br><br>
+            </div>
+			<div class="slideshow-container">
+				<div class="mySlides fade">
+					<img src="sedan.jpeg" style="width:60%">
+					<div class="text">$1120 /month</div>
+				</div>
+
+				<div class="mySlides fade">
+					<img src="honda.jpeg" style="width:50%">
+					<div class="text">$2120 /month</div>
+				</div>
+
+				<div class="mySlides fade">
+					<img src="motor.jpeg" style="width:60%">
+					<div class="text">$1120 /month</div>
+				</div>
+			</div>
+			<a class="prev" onclick="plusSlides(-1)">❮</a>
+			<a class="next" onclick="plusSlides(1)">❯</a>
+
+		</div>
+		<br>
+
+		<div style="text-align:center">
+			<span class="dot" onclick="currentSlide(1)"></span>
+			<span class="dot" onclick="currentSlide(2)"></span>
+			<span class="dot" onclick="currentSlide(3)"></span>
+		</div>
+
+	</main>
+<script>
+  let slideIndex = 0;
+      let timeoutId = null;
+      const slides = document.getElementsByClassName("mySlides");
+      const dots = document.getElementsByClassName("dot");
+      
+      showSlides();
+      function currentSlide(index) {
+           slideIndex = index;
+           showSlides();
+      }
+     function plusSlides(step) {
+        
+        if(step < 0) {
+            slideIndex -= 2;
+            
+            if(slideIndex < 0) {
+              slideIndex = slides.length - 1;
+            }
+        }
+        
+        showSlides();
+     }
+      function showSlides() {
+        for(let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+          dots[i].classList.remove('active');
+        }
+        slideIndex++;
+        if(slideIndex > slides.length) {
+          slideIndex = 1
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].classList.add('active');
+         if(timeoutId) {
+            clearTimeout(timeoutId);
+         }
+        timeoutId = setTimeout(showSlides, 3000); // Change image every 3 seconds
+      }
+  </script>
+</body>
+
+
+</html>
